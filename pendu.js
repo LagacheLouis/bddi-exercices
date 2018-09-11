@@ -1,5 +1,5 @@
 // Prérequis pour le prompteur (pas d'importance pour le cours)
-
+//test
 const readline = require('readline');
 
 const rl = readline.createInterface({
