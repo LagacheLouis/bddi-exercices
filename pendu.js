@@ -20,7 +20,7 @@ class Game {
     function init() {
       lives = 5
 
-      word = WORD_LIST[Math.floor(Math.random() * Math.floor(WORD_LIST.length))];
+      word = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
         letters = []
       // Count without duplicated
       missing = Array.prototype.filter.call(word, (letter, i) => {
