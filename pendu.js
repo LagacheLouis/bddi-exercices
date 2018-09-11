@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 
 // La fonction Game a terminer (ça se corse)
 
-const WORD_LIST = ['chevre', 'vache']
+const WORD_LIST = ['chevre', 'vache','poney']
 
 class Game {
   constructor() {
