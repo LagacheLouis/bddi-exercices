@@ -1,5 +1,4 @@
 // Prérequis pour le prompteur (pas d'importance pour le cours)
-//test
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -21,7 +20,7 @@ class Game {
     function init() {
       lives = 5
 
-      word = // TODO: récupérer un mot random depuis WORD_LIST (1 ligne)
+      word = WORD_LIST[Math.floor(Math.random() * Math.floor(WORD_LIST.length))];
         letters = []
       // Count without duplicated
       missing = Array.prototype.filter.call(word, (letter, i) => {
@@ -36,6 +35,17 @@ class Game {
       // - modifier `lives` et `missing` en conséquence
       // - ne retourne rien
       // - (6 lignes)
+      if(letters.includes(letter)){
+        console.log("Tu as déjà testé cette lettre");
+      }else{
+        letters.push(letter);
+        if(word.includes(letter)){
+          missing--;
+        }else {
+          lives--;
+          console.log("Mauvaise lettre !!!");
+        }
+      }
     }
 
     function displayWord() {
@@ -45,6 +55,17 @@ class Game {
       // - exemple : v_ch_e
       // - Utiliser une boucle for et la concaténation
       // - (9 lignes)
+      let currentword = "";
+
+      for (let i = 0; i < word.length; i++) {
+          if(letters.includes(word[i])){
+            currentword += word[i];
+          }else{
+            currentword += "_";
+          }
+      }
+
+      return currentword;
     }
 
     function prompt(cb) {
@@ -53,7 +74,7 @@ class Game {
     }
 
     function onAnswer(answer) {
-      addLetter(/* TODO: appeler la fonction addLetter en envoyant la première lettre de `answer` (1 ligne) */)
+      addLetter(/* TODO: appeler la fonction addLetter en envoyant la première lettre de `answer` (1 ligne) */ answer[0])
 
       if (missing > 0 && lives > 0) {
         prompt(onAnswer)
